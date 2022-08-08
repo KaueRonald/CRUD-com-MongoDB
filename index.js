@@ -2,27 +2,33 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const connectToDb = require("./database/db")
+const handlebars = require('express-handlebars');
+const listRoutes = require('./routes/listRoutes')
+const path = require('path');
 
-
+connectToDb();
 app.use(
     express.urlencoded({
         extended: true,
     }),
 );
 
+//Public (Arquivos estáticos)
+app.use(express.static(path.join(__dirname,'/public')))
+
+// Handlebars (Template-Engine)
+app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 app.use(express.json());
 
 //rota da API
-const listRoutes = require('./routes/listRoutes')
-
 app.use('/list', listRoutes)
 
 //rota inicial
 app.get('/', (req, res) => {
-    res.json({ message: 'Oi Express!' });
+    res.render("index")
 })
 
-
 //porta de acesso
-mongoose.connect(`${process.env.DATABASE_NAME}//${process.env.MONGO_HOST}/${process.env.MONGO_DATABASE}`)
 app.listen(3000);
