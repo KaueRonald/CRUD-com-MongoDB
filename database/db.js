@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const connectToDb = () => {
     mongoose.connect(
-        "mongodb+srv://root:admin@mytodo.9skrgbx.mongodb.net/?retryWrites=true&w=majority",
+        "mongodb+srv://root:admin@mytodo.561nanl.mongodb.net/?retryWrites=true&w=majority",
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,

@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 
 //rota da API
-app.use('/list', listRoutes)
+app.post('/list', listRoutes)
 
 //rota inicial
 app.get('/', (req, res) => {

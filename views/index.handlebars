@@ -1,17 +1,20 @@
 <body>
 <p><b>📌 Seja bem vindo ao Save Ideas. Aqui você pode salvar qualquer ideia que tiver!</b></p>
-    <form action="/" method="post">
+    <form action="/list" method="post">
   <div class="mb-3">
     <label  class="form-label" ><strong>Título</strong></label>
-    <input type="text" class="form-control" placeholder="Titulo..." required>
+    <input name="Titulo" type="text" class="form-control" placeholder="Titulo..." required>
   </div>
   <div class="mb-3">
     <label class="form-label"><strong>Descrição</strong></label>
-    <input type="text" class="form-control" placeholder="Descrição..." required>
+    <input name="Texto" type="text" class="form-control" placeholder="Descrição..." required>
   </div>
-  <button type="submit" class="btn btn-dark">Adicionar</button>
+  <button type="submit" class="btn btn-dark" id="botaozin">Adicionar</button>
 </form>
-<br><br>
+
+<br>
+<br>
+
 <ul class="list-group">
   <li class="list-group-item list-group-item-dark">
     
@@ -19,10 +22,14 @@
         <button class="btn btn-dark" id="botao">
         ✏
         </button>
-        <button class="btn btn-dark" id="botao">
+        <button action="/:id" method="delete" type="submit" class="btn btn-dark" id="botao">
         🗑
         </button>
     </div>
+
   </li>
 </ul>
+<script>
+
+</script>
 </body>

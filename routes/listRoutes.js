@@ -1,9 +1,8 @@
 const router = require('express').Router()
-
 const lista = require('../models/list')
 
 // Inserindo itens no banco
-router.post('/', async (req, res) => {
+router.post('/list', async (req, res) => {
 
     const { Titulo, Texto } = req.body
 
@@ -18,7 +17,8 @@ router.post('/', async (req, res) => {
 
     try {
         await lista.create(item)
-        res.status(201).json({ message: 'item de lista inserido' })
+         res.status(200).render("index")
+           
 
     } catch (error) {
         res.status(500).json({ error: error })
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 })
 
 // Buscando os itens
-router.get('/', async (req, res) => {
+router.get('/list', async (req, res) => {
 
     try {
 
@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 })
 
 //Buscando itens pelo id
-router.get('/:id', async (req, res) => {
+router.get('/list/:id', async (req, res) => {
 
     const id = req.params.id
 
@@ -56,7 +56,7 @@ router.get('/:id', async (req, res) => {
 })
 
 //atualizando os itens (PUT, PATCH)
-router.patch('/:id', async (req, res) => {
+router.patch('/list/:id', async (req, res) => {
 
     const id = req.params.id
 
@@ -82,7 +82,7 @@ router.patch('/:id', async (req, res) => {
 })
 
 //Deletar itens
-router.delete('/:id', async (req, res) => {
+router.delete('/list/:id', async (req, res) => {
 
     const id = req.params.id
 
@@ -96,7 +96,7 @@ router.delete('/:id', async (req, res) => {
     try {
 
         await list.deleteOne({ _id: id })
-        res.status(200).json({message: 'Item removido com sucesso'})
+        res.status(200).json({ message: 'Item removido com sucesso' })
 
     } catch (error) {
         res.status(500).json({ error: error })
