@@ -15,10 +15,10 @@ app.use(
 );
 
 //Public (Arquivos estáticos)
-app.use(express.static(path.join(__dirname,'/public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 // Handlebars (Template-Engine)
-app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(express.json());
 
@@ -44,4 +44,4 @@ app.delete('/list/:id', listRoutes)
 app.set("port", process.env.PORT || 3000);
 app.listen(app.get("port"), function () {
     console.log("Server started on port " + app.get("port"));
-  });
+});
