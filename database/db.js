@@ -1,15 +1,7 @@
 const mongoose = require('mongoose')
 
 const connectToDb = () => {
-    mongoose.connect(
-        "mongodb+srv://root:admin@mytodo.561nanl.mongodb.net/?retryWrites=true&w=majority",
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        }
-    ).then(() => {
-        console.log("MongoDB Atlas conectado!")
-    }).catch((err) => console.log(err))
+    mongoose.connect(`${process.env.DATABASE_NAME}//${process.env.MONGO_HOST}/${process.env.MONGO_DATABASE}`)
 }
 
 module.exports = connectToDb;
