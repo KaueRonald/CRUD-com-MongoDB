@@ -54,7 +54,7 @@ h1 {
   }
 }
 
-#botao{
+#buttonEdit{
   border-radius: 20px;
   border: 1px solid #191818;
   width: 38px;
@@ -63,6 +63,18 @@ h1 {
   cursor: pointer;
 
 }
+#buttonTrash{
+  border-radius: 20px;
+  border: 1px solid ff0000;
+  width: 38px;
+  height: 38px;
+  margin-right: 8px;
+  cursor: pointer;
+
+}
 #botoes{
   text-align: right;
+}
+.list-group-item{
+  margin: 30px 0;
 }

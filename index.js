@@ -25,10 +25,20 @@ app.use(express.json());
 //rota da API
 app.post('/list', listRoutes)
 
-//rota inicial
 app.get('/', (req, res) => {
     res.render("index")
 })
+//rota inicial
+app.get('/list', listRoutes)
+
+//atualizando os itens (PUT, PATCH)
+app.patch('/list/:id', listRoutes)
+
+//Buscando itens pelo id
+app.get('/list/:id', listRoutes)
+
+//Deletar itens
+app.delete('/list/:id', listRoutes)
 
 //porta de acesso
 app.listen(3000);

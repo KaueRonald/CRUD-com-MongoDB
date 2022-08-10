@@ -17,8 +17,8 @@ router.post('/list', async (req, res) => {
 
     try {
         await lista.create(item)
-         res.status(200).render("index")
-           
+         return res.status(200).render('index')
+         
 
     } catch (error) {
         res.status(500).json({ error: error })
@@ -29,9 +29,9 @@ router.post('/list', async (req, res) => {
 router.get('/list', async (req, res) => {
 
     try {
-
         const item = await lista.find()
-        res.status(200).json(item)
+        res.status(201).json(item)
+
     } catch (error) {
         res.status(500).json({ error: error })
     }
@@ -96,7 +96,8 @@ router.delete('/list/:id', async (req, res) => {
     try {
 
         await list.deleteOne({ _id: id })
-        res.status(200).json({ message: 'Item removido com sucesso' })
+        res.status(201).json({ message: 'Item removido com sucesso' })
+        
 
     } catch (error) {
         res.status(500).json({ error: error })
