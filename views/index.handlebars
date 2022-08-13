@@ -18,5 +18,29 @@
 
   </ul>
 
+  <div class="modal" tabindex="-1" role="dialog" id="modalsin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">atualizar ideia</h5>
+        </div>
+        <div class="modal-body">
+          <form action="/list/:id" method="patch">
+            <div class="mb-3">
+              <label class="form-label"><strong>Título</strong></label>
+              <input name="Titulo" type="text" class="form-control" placeholder="Titulo..." required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><strong>Descrição</strong></label>
+              <input name="Texto" type="text" class="form-control" placeholder="Descrição..." required>
+            </div>
+            <button type="button" class="btn btn-dark">Salvar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="fechar"
+              onclick="fecharModal()">Fechar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>

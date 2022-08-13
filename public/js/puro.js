@@ -1,4 +1,13 @@
 
+
+function abrirModal() {
+    document.getElementById("modalsin").style.display = "inline";
+}
+
+function fecharModal() {
+    document.getElementById("modalsin").style.display = "none";
+}
+
 function createLi(item) {
 
     //Criação da LI
@@ -15,6 +24,9 @@ function createLi(item) {
     buttonEdit.setAttribute('id', 'buttonEdit')
     buttonEdit.setAttribute('class', 'btn btn-dark')
     buttonEdit.append('✏')
+    buttonEdit.addEventListener('click', (event) => {
+        abrirModal();
+    })
 
     //Botão de apagar LI
     let buttonTrash = document.createElement("button")
@@ -29,7 +41,7 @@ function createLi(item) {
     p.append(item.Texto)
     li.append(p)
     ul.append(li)
-
+    
 }
 
 //Mostra os itens
@@ -44,17 +56,19 @@ async function getItems() {
     })
 
     await createList(results)
-    console.log(results);
+
 
 
     let editButton = document.querySelectorAll('#buttonEdit')
     editButton.forEach((item, index) => {
         item.addEventListener('click', (event) => {
             edit(results[index]._id)
-
+            results[index].Titulo
+            results[index].Texto
+            console.log(results[index].Titulo)
+            console.log(results[index].Texto)
         })
     })
-
     let trashButton = document.querySelectorAll('#buttonTrash')
     trashButton.forEach((item, index) => {
         item.addEventListener('click', (event) => {
@@ -64,9 +78,9 @@ async function getItems() {
 }
 
 //Atualiza
-async function edit() {
+function edit(id){
     fetch(`http://localhost:3000/list/${id}`, {
-        method: 'PATCH',
+        method: 'GET',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -78,8 +92,6 @@ async function edit() {
         console.log('error')
     })
 }
-
-
 //DELETAR
 async function apagar(id) {
     fetch(`http://localhost:3000/list/${id}`, {
